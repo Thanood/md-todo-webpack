@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html class="no-js" lang="">
   <head>
     <meta charset="utf-8">
     <title><%- htmlWebpackPlugin.options.metadata.title %></title>
@@ -7,14 +7,17 @@
     <base href="<%- htmlWebpackPlugin.options.metadata.baseUrl %>">
     <!-- imported CSS are concatenated and added automatically -->
   </head>
-  <body aurelia-app="main">
+  <body>
+    <div class="hiddendiv"></div>
     <div class="splash">
       <div class="message"><%- htmlWebpackPlugin.options.metadata.title %></div>
       <i class="fa fa-spinner fa-spin"></i>
     </div>
-    <% if (htmlWebpackPlugin.options.metadata.server) { %>
-    <!-- Webpack Dev Server reload -->
-    <script src="/webpack-dev-server.js"></script>
-    <% } %>
+    <div aurelia-app="main">
+      <% if (htmlWebpackPlugin.options.metadata.server) { %>
+      <!-- Webpack Dev Server reload -->
+      <script src="/webpack-dev-server.js"></script>
+      <% } %>
+    </div>
   </body>
 </html>
