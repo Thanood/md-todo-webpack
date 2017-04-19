@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const { AureliaPlugin } = require('aurelia-webpack-plugin');
+const { AureliaPlugin,ModuleDependenciesPlugin } = require('aurelia-webpack-plugin');
 const { optimize: { CommonsChunkPlugin }, ProvidePlugin } = require('webpack')
 const { TsConfigPathsPlugin, CheckerPlugin } = require('awesome-typescript-loader');
 
@@ -19,7 +19,6 @@ const nodeModulesDir = path.resolve(__dirname, 'node_modules');
 const baseUrl = '/';
 
 const cssRules = [
-    'style-loader',
   { loader: 'css-loader' },
   {
     loader: 'postcss-loader',
@@ -54,7 +53,7 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
       // CSS required in JS/TS files should use the style-loader that auto-injects it into the website
       // only when the issuer is a .js/.ts file, so the loaders are not applied inside html templates
       {
-        test: /\.css$/i,
+        test: /\.(scss|css)$/i,
         issuer: [{ not: [{ test: /\.html$/i }] }],
         use: extractCss ? ExtractTextPlugin.extract({
           fallback: 'style-loader',
@@ -90,6 +89,71 @@ module.exports = ({production, server, extractCss, coverage} = {}) => ({
   },
   plugins: [
     new AureliaPlugin(),
+    new ModuleDependenciesPlugin({
+      "aurelia-materialize-bridge": [
+'./autocomplete/autocomplete',
+'./badge/badge',
+'./box/box',
+'./breadcrumbs/breadcrumbs',
+'./breadcrumbs/instructionFilter',
+'./button/button',
+'./card/card',
+'./carousel/carousel-item',
+'./carousel/carousel',
+'./char-counter/char-counter',
+'./checkbox/checkbox',
+'./chip/chip',
+'./chip/chips',
+'./collapsible/collapsible',
+'./collection/collection-header',
+'./collection/collection-item',
+'./collection/collection',
+'./collection/md-collection-selector',
+'./colors/colorValueConverters',
+'./colors/md-colors',
+'./common/attributeManager',
+'./common/attributes',
+'./common/constants',
+'./common/events',
+'./datepicker/datepicker-default-parser',
+'./datepicker/datepicker',
+'./dropdown/dropdown-element',
+'./dropdown/dropdown',
+'./dropdown/dropdown-fix',
+'./fab/fab',
+'./file/file',
+'./footer/footer',
+'./input/input-prefix',
+'./input/input-update-service',
+'./input/input',
+'./modal/modal',
+'./modal/modal-trigger',
+'./navbar/navbar',
+'./pagination/pagination',
+'./parallax/parallax',
+'./progress/progress',
+'./pushpin/pushpin',
+'./radio/radio',
+'./range/range',
+'./scrollfire/scrollfire-patch',
+'./scrollfire/scrollfire-target',
+'./scrollfire/scrollfire',
+'./scrollspy/scrollspy',
+'./select/select',
+'./sidenav/sidenav-collapse',
+'./sidenav/sidenav',
+'./slider/slider',
+'./switch/switch',
+'./tabs/tabs',
+'./toast/toastService',
+'./tooltip/tooltip',
+'./transitions/fadein-image',
+'./transitions/staggered-list',
+'./validation/validationRenderer',
+'./waves/waves',
+'./well/md-well.html'
+      ],
+    }),
     new ProvidePlugin({
       'Promise': 'bluebird',
       '$': 'jquery',

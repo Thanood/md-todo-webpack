@@ -2,6 +2,8 @@ import {Aurelia} from 'aurelia-framework'
 import {PLATFORM} from 'aurelia-pal';
 import {I18N, Backend} from 'aurelia-i18n';
 import environment from './environment';
+import 'materialize-css';
+import 'aurelia-materialize-bridge';
 
 //Configure Bluebird Promises.
 // (<any>Promise).config({
@@ -38,5 +40,5 @@ export function configure(aurelia: Aurelia) {
       });
     });
   
-  aurelia.start().then(() => aurelia.setRoot());
+  aurelia.start().then(() => aurelia.setRoot(PLATFORM.moduleName('app')));
 }
