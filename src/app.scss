@@ -1,0 +1,24 @@
+html {
+  height: calc(100% - 64px);
+}
+
+body {
+  height: 100%;
+}
+
+.todo-list {
+  md-checkbox {
+    position: relative;
+    top: 7px;
+  }
+
+  .todo-title.done {
+    text-decoration: line-through;
+  }
+}
+
+.todo-list-placeholder {
+  color: lighten(black, 70);
+  height: 100%;
+  justify-content: center;
+}

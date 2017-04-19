@@ -1,0 +1,19 @@
+<template>
+  <div md-modal md-on-modal-ready.delegate="onReady($event)" md-modal.ref="modal">
+    <div class="modal-content">
+      <h4 t="todo.add">Add a todo</h4>
+      <form submit.delegate="saveTodo()">
+        <div>
+          <md-input ref="input" t="[md-label]todo.modal.inputLabel" md-label="put some text here" md-value.bind="newTodo.title"></md-input>
+        </div>
+      </form>
+      <div>
+        <md-checkbox md-checked.bind="keepOpen"><span t="todo.modal.keepOpen"></span></md-checkbox>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a click.delegate="saveTodo()" md-button="flat: true;" md-waves="color: primary;" class="modal-action primary-text"><span t="todo.modal.add"></span></a>
+      <a md-button="flat: true;" md-waves="color: primary;" class="modal-action modal-close"><span t="todo.modal.close"></span></a>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,17 @@
+<template>
+  <require from="./nav-bar.css"></require>
+  <md-navbar>
+    <a href="#/" class="brand-logo"><span>${title}</span></a>
+    <!--<ul class="hide-on-med-and-down right">
+      <li md-waves><a>About</a></li>
+      <li md-waves><a>Installation</a></li>
+      <li md-waves><a>Project Status</a></li>
+    </ul>-->
+    <div class="i18n-dropdown right">
+      <a md-button="flat: true;" md-dropdown="ref.bind: i18nDropdown;">${language.title}<span class="material-icons">arrow_drop_down</span></a>
+      <ul ref="i18nDropdown">
+        <li repeat.for="lang of languages"><a click.delegate="switchLanguage(lang.code)">${lang.title}</a></li>
+      </ul>
+    </div>
+  </md-navbar>
+</template>
