@@ -14,8 +14,8 @@ import 'aurelia-materialize-bridge';
 
 export function configure(aurelia: Aurelia) {
   aurelia.use
-    .standardConfiguration();
-    // .feature('resources');
+    .standardConfiguration()
+    .feature(PLATFORM.moduleName('resources/index'));
 
   if (environment.debug) {
     aurelia.use.developmentLogging();

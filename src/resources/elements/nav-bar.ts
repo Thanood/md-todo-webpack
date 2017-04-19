@@ -1,5 +1,6 @@
 import { autoinject, bindable } from 'aurelia-framework';
 import { I18N } from "aurelia-i18n";
+import './nav-bar.scss';
 
 @autoinject()
 export class NavBar {
